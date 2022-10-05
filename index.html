@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Register</title>
+   <link rel="stylesheet" href="SistemaLogin-Front/css/style.css">
+</head>
+<body>
+   <header>
+      <div class="menu-content">
+         <h1>Sistema de Login</h1>
+      </div>
+   </header>
+   <main>
+      <form class="form">
+         <img class="user" src="SistemaLogin-Front/assets/img/icon-usuario.png" alt="icone usuário">
+         <h1>Registrar</h1>
+         <label for="input-user">Usuário:</label>
+         <input type="text" id="input-user">
+         <p class="msg-error"></p>
+         <label for="password" class="password">Senha:</label>
+         <div class="container-password">
+            <input type="password" id="input-password">
+            <img class="eye-show" src="SistemaLogin-Front/assets/img/eye-show-password.png" alt="mostrar senha" title="esconder senha">
+            <img class="eye-ocult active" src="SistemaLogin-Front/assets/img/eye-ocult-password.png" title="exibir senha" alt="ocultar senha">
+         </div>
+         <p class="msg-error"></p>
+         <label for="input-confirmPassword" class="confirm-password">Confirmar senha:</label>
+         <div class="container-confirm-password">
+            <input type="password" id="input-confirmPassword">
+            <img class="eye-show" src="SistemaLogin-Front/assets/img/eye-show-password.png" title="esconder senha" alt="esconder senha">
+            <img class="eye-ocult active" src="SistemaLogin-Front/assets/img/eye-ocult-password.png" title="exibir senha" alt="ocultar senha">
+         </div>
+         <p class="msg-error"></p>
+         <button id="create-account">Cria conta</button>
+      </form>
+   </main>
+   <script src="SistemaLogin-Front/js/register.js"></script>
+</body>
+</html>

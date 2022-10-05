@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="stylesheet" href="SistemaLogin-Front/css/style.css">
+</head>
+<body>
+   <header>
+      <div class="menu-content">
+         <h1>Sistema de Login</h1>
+      </div>
+   </header>
+   <main>
+      <form class="form">
+         <img class="user" src="SistemaLogin-Front/assets/img/icon-usuario.png" alt="icone usuario">
+         <h1>Login</h1>
+         <label for="usuario-login">Usuario:</label>
+         <input type="text"id="usuario-login">
+         <label for="password-login">Senha: </label>
+         <div class="container-password">
+            <input type="password" id="password-login">
+            <img class="eye-ocult active" src="SistemaLogin-Front/assets/img/eye-ocult-password.png" title="exibir senha" alt="esconde senha">
+            <img class="eye-show" src="SistemaLogin-Front/assets/img/eye-show-password.png" title="esconder senha" alt="mostrar senha">
+         </div>
+         <p class="msg-error"></p>
+         <button >Entrar</button>
+      </form>
+   </main>
+   <script src="SistemaLogin-Front/js/login.js"></script>
+</body>
+</html>
