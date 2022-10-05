@@ -39,7 +39,7 @@ form.addEventListener('submit', function(e){
 function Get(yourUrl) {
    const Httpreq = new XMLHttpRequest();
    Httpreq.open("GET",yourUrl,false);
-   Httpreq.send();
+   Httpreq.send(null);
    return Httpreq.responseText;   
 
 }
