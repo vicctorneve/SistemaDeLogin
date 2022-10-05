@@ -58,15 +58,6 @@ public class UsuarioController {
 		return ResponseEntity.status(204).build();
 	}
 	
-	//@PostMapping("/login")
-	//public ResponseEntity<Usuario> validarSenha(@Valid @RequestBody Usuario usuario) {
-	//   Boolean valid = usuarioService.validarSenha(usuario);
-	//   if (!valid) {
-	 //     return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-	//   }
-	//   return ResponseEntity.status(200).build();
-	//}
-	
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public Map<String, String> handleValidationException(MethodArgumentNotValidException ex) {
