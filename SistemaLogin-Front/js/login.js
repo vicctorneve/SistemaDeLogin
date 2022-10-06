@@ -5,6 +5,7 @@ const inputs = form.querySelectorAll('input')
 const btnShowPassword = form.querySelector('.eye-show')
 const btnOcultPassword = form.querySelector('.eye-ocult')
 const msgError = form.querySelector('.msg-error')
+const confirmLogin = false;
 
 btnOcultPassword.addEventListener('click', function(){
    btnOcultPassword.classList.remove('active')
@@ -25,10 +26,7 @@ form.addEventListener('submit', function(e){
          return
       }
    }
-   logar()
-
-})
-
+   
 function logar(){
    fetch("http://localhost:8080/usuarios")
    .then((response) => response.json())
