@@ -28,22 +28,28 @@ form.addEventListener('submit', function(e){
    }
    logar()
 })
+let confirm = false;
 
 function logar(){
    fetch("http://localhost:8080/usuarios")
    .then((response) => response.json())
    .then((obj) => {
-      return checkLogin = obj.find((valor) => {
-         return usuarioLogin.value === valor.username && passwordLogin.value === valor.password
-      }) 
-      
+      obj.forEach(el => {
+         if(usuarioLogin.value === el.username && passwordLogin.value === el.password){
+            confirm = true;
+         }
+      });
+      return confirm
+      // return checkLogin = obj.find((valor) => {
+      //    return usuarioLogin.value === valor.username && passwordLogin.value === valor.password
+      // }) 
    })
    .then((login) => {
-      if(login !== undefined){
+      if(confirm){
          alert('Usuario Logado com Sucesso!')
       } else {
          alert('Usuario não encontrado')
       }
    })
-   .catch((e) => alert(e))
+   .catch((e) => alert('e'))
 }

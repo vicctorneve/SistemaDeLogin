@@ -98,6 +98,6 @@ form.addEventListener('submit',(e) => {
       
       cleanInput();
       alert('Usuario cadastrado')
-      window.location.href = 'login.html';
+      window.location.href = 'index.html';
    }
 });
