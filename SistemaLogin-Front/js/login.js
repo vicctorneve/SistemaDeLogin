@@ -26,7 +26,9 @@ form.addEventListener('submit', function(e){
          return
       }
    }
-   
+   logar()
+})
+
 function logar(){
    fetch("http://localhost:8080/usuarios")
    .then((response) => response.json())
@@ -45,8 +47,3 @@ function logar(){
    })
    .catch((e) => alert(e))
 }
-
-
-
-
-
