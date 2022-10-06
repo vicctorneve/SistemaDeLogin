@@ -28,7 +28,6 @@ form.addEventListener('submit', function(e){
    }
    logar()
 })
-let confirm = false;
 
 function logar(){
    fetch("http://localhost:8080/usuarios")
