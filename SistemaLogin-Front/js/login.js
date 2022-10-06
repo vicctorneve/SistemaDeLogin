@@ -1,7 +1,6 @@
 const form = document.querySelector('.form')
 const usuarioLogin = document.querySelector('#usuario-login');
 const passwordLogin = document.querySelector('#password-login');
-//const btnLogin = document.querySelector('#login');
 const inputs = form.querySelectorAll('input')
 const btnShowPassword = form.querySelector('.eye-show')
 const btnOcultPassword = form.querySelector('.eye-ocult')
@@ -26,24 +25,29 @@ form.addEventListener('submit', function(e){
          return
       }
    }
-   const checkLogin = json_obj.find(function(valor){
-      return usuarioLogin.value === valor.username && passwordLogin.value === valor.password
-   })
-   if(checkLogin !== undefined){
-      alert('Usuario Logado com Sucesso')
-   }else{
-      alert('Usuário não encontrado')
-   }
+   logar()
+
 })
 
-function Get(yourUrl) {
-   const Httpreq = new XMLHttpRequest();
-   Httpreq.open("GET",yourUrl,false);
-   Httpreq.send();
-   return Httpreq.responseText;   
-
+function logar(){
+   fetch("http://localhost:8080/usuarios")
+   .then((response) => response.json())
+   .then((obj) => {
+      return checkLogin = obj.find((valor) => {
+         return usuarioLogin.value === valor.username && passwordLogin.value === valor.password
+      }) 
+      
+   })
+   .then((login) => {
+      if(login !== undefined){
+         alert('Usuario Logado com Sucesso!')
+      } else {
+         alert('Usuario não encontrado')
+      }
+   })
+   .catch((e) => alert(e))
 }
-const json_obj = JSON.parse(Get("http://localhost:8080/usuarios"));
+
 
 
 
