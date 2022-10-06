@@ -11,6 +11,7 @@ const containerConfirmPassword = document.querySelector('.container-confirm-pass
 const btnShowConfirmPassword = containerConfirmPassword.querySelector('.eye-show');
 const btnOcultConfirmPassword = containerConfirmPassword.querySelector('.eye-ocult');
 
+// consumindo api
 function cadastrar() {
    fetch("http://localhost:8080/usuarios",
       {
@@ -56,18 +57,13 @@ const inputPassword = form.querySelector('#input-password');
 const inputConfirmPassword = form.querySelector('#input-confirmPassword');
 const btnCreateAccount = form.querySelector('#create-account');
 const msgError = form.querySelectorAll('.msg-error');
-let usuarioRegister = null;
-let passwordRegister = null;
-
-form.addEventListener('submit',(e) => e.preventDefault());
 
 const validateUser = () => inputUser.value.length >= 5 && inputUser.value.length <= 12;
 
 const validatePassword = () => inputPassword.value.length >= 6 && inputPassword.value.length <= 12;  
 
-function validateConfirmPassword(){
-   return inputPassword.value === inputConfirmPassword.value && inputConfirmPassword.value !== '';
-}
+const validateConfirmPassword =() => inputPassword.value === inputConfirmPassword.value && inputConfirmPassword.value !== '';
+
 
 function createError(validate,i,msg){
    if(validate){
@@ -83,21 +79,25 @@ const cleanInput = () => {
    inputConfirmPassword.value = "";
 }
 
-btnCreateAccount.addEventListener('click',function(){
+form.addEventListener('submit',(e) => {
+   e.preventDefault()
+
    for(let input of inputs){
       if(input.value === ''){
          alert('Preencha todos os campos')
          return
       }
    }
+
    createError(validateUser(), 0, 'Usuario precisa conter entre 5 e 12 caracteres');
    createError(validatePassword(), 1, 'Senha precisa conter entre 6 e 12 caracteres');
    createError(validateConfirmPassword(), 2, 'Senha e confirme senha precisam ser iguais')
+
    if(validateUser() && validatePassword() && validateConfirmPassword()){
       cadastrar();
+      
       cleanInput();
-
       alert('Usuario cadastrado')
       window.location.href = 'login.html';
    }
-})
+});

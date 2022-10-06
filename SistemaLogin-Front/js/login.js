@@ -1,11 +1,11 @@
 const form = document.querySelector('.form')
 const usuarioLogin = document.querySelector('#usuario-login');
 const passwordLogin = document.querySelector('#password-login');
-//const btnLogin = document.querySelector('#login');
 const inputs = form.querySelectorAll('input')
 const btnShowPassword = form.querySelector('.eye-show')
 const btnOcultPassword = form.querySelector('.eye-ocult')
 const msgError = form.querySelector('.msg-error')
+const confirmLogin = false;
 
 btnOcultPassword.addEventListener('click', function(){
    btnOcultPassword.classList.remove('active')
@@ -29,6 +29,11 @@ form.addEventListener('submit', function(e){
    const checkLogin = json_obj.find(function(valor){
       return usuarioLogin.value === valor.username && passwordLogin.value === valor.password
    })
+   json_obj.forEach(obj => {
+      if(inputUser.value === obj.username && inputPassword.value === obj.password){
+         confirm = true
+      }
+   });
    if(checkLogin !== undefined){
       alert('Usuario Logado com Sucesso')
    }else{
