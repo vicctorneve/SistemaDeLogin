@@ -34,22 +34,16 @@ function logar(){
    fetch("http://localhost:8080/usuarios")
    .then((response) => response.json())
    .then((obj) => {
-      obj.forEach(el => {
-         if(usuarioLogin.value === el.username && passwordLogin.value === el.password){
-            confirm = true;
-         }
-      });
-      return confirm
-      // return checkLogin = obj.find((valor) => {
-      //    return usuarioLogin.value === valor.username && passwordLogin.value === valor.password
-      // }) 
+      return checkLogin = obj.find((valor) => {
+         return usuarioLogin.value === valor.username && passwordLogin.value === valor.password
+      }) 
    })
-   .then((confirm) => {
-      if(confirm){
+   .then((checkLogin) => {
+      if(checkLogin){
          alert('Usuario Logado com Sucesso!')
       } else {
          alert('Usuario não encontrado')
       }
    })
-   .catch((e) => alert('e'))
+   .catch((e) => alert(e))
 }
