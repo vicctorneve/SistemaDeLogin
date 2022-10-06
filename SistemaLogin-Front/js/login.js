@@ -44,7 +44,7 @@ function logar(){
       //    return usuarioLogin.value === valor.username && passwordLogin.value === valor.password
       // }) 
    })
-   .then((login) => {
+   .then((confirm) => {
       if(confirm){
          alert('Usuario Logado com Sucesso!')
       } else {
