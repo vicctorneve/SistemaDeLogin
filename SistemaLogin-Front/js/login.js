@@ -26,29 +26,26 @@ form.addEventListener('submit', function(e){
          return
       }
    }
-   const checkLogin = json_obj.find(function(valor){
-      return usuarioLogin.value === valor.username && passwordLogin.value === valor.password
+   
+function logar(){
+   fetch("http://localhost:8080/usuarios")
+   .then((response) => response.json())
+   .then((obj) => {
+      return checkLogin = obj.find((valor) => {
+         return usuarioLogin.value === valor.username && passwordLogin.value === valor.password
+      }) 
+      
    })
-   json_obj.forEach(obj => {
-      if(inputUser.value === obj.username && inputPassword.value === obj.password){
-         confirm = true
+   .then((login) => {
+      if(login !== undefined){
+         alert('Usuario Logado com Sucesso!')
+      } else {
+         alert('Usuario não encontrado')
       }
-   });
-   if(checkLogin !== undefined){
-      alert('Usuario Logado com Sucesso')
-   }else{
-      alert('Usuário não encontrado')
-   }
-})
-
-function Get(yourUrl) {
-   const Httpreq = new XMLHttpRequest();
-   Httpreq.open("GET",yourUrl,false);
-   Httpreq.send(null);
-   return Httpreq.responseText;   
-
+   })
+   .catch((e) => alert(e))
 }
-const json_obj = JSON.parse(Get("http://localhost:8080/usuarios"));
+
 
 
 
