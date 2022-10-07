@@ -29,36 +29,17 @@ form.addEventListener('submit', function(e){
    logar()
 })
 
-// function logar(){
-//    fetch("http://localhost:8080/usuarios")
-//    .then((response) => response.json())
-//    .then((obj) => {
-//       return checkLogin = obj.find((valor) => {
-//          return usuarioLogin.value === valor.username && passwordLogin.value === valor.password
-//       }) 
-//    })
-//    .then((checkLogin) => {
-//       if(checkLogin){
-//          alert('Usuario Logado com Sucesso!')
-//       } else {
-//          alert('Usuario não encontrado')
-//       }
-//    })
-//    .catch((e) => alert(e))
-// }
-
 async function logar(){
-   const url = await fetch("http://localhost:8080/usuarios");
-   const obj_json = await url.json();
-   checkBD();
-   
+   try {
+      const url = await fetch("http://localhost:8080/usuarios");
+      if(url.status !== 200) throw new error('ERROR')
+      const obj_json = await url.json();
+      const confirm = await obj_json.find(valor => {
+         return usuarioLogin.value === valor.username && passwordLogin.value === valor.password
+      })
+      checkLogin(confirm)
+   } catch (error) {alert(error)}
 }
 
-function checkBD(obj){
-   const confirm = obj.find(valor => usuarioLogin.value === valor.username && passwordLogin.value === valor.password)
-   if(confirm){
-      alert('Usuario Logado com Sucesso!')
-   } else {
-      alert('Usuario não encontrado')
-   }
-}
+const checkLogin = confirm => confirm ? alert('Usuario Logado com Sucesso!') : alert('Usuario não encontrado')
+
