@@ -29,20 +29,36 @@ form.addEventListener('submit', function(e){
    logar()
 })
 
-function logar(){
-   fetch("http://localhost:8080/usuarios")
-   .then((response) => response.json())
-   .then((obj) => {
-      return checkLogin = obj.find((valor) => {
-         return usuarioLogin.value === valor.username && passwordLogin.value === valor.password
-      }) 
-   })
-   .then((checkLogin) => {
-      if(checkLogin){
-         alert('Usuario Logado com Sucesso!')
-      } else {
-         alert('Usuario não encontrado')
-      }
-   })
-   .catch((e) => alert(e))
+// function logar(){
+//    fetch("http://localhost:8080/usuarios")
+//    .then((response) => response.json())
+//    .then((obj) => {
+//       return checkLogin = obj.find((valor) => {
+//          return usuarioLogin.value === valor.username && passwordLogin.value === valor.password
+//       }) 
+//    })
+//    .then((checkLogin) => {
+//       if(checkLogin){
+//          alert('Usuario Logado com Sucesso!')
+//       } else {
+//          alert('Usuario não encontrado')
+//       }
+//    })
+//    .catch((e) => alert(e))
+// }
+
+async function logar(){
+   const url = await fetch("http://localhost:8080/usuarios");
+   const obj_json = await url.json();
+   checkBD();
+   
+}
+
+function checkBD(obj){
+   const confirm = obj.find(valor => usuarioLogin.value === valor.username && passwordLogin.value === valor.password)
+   if(confirm){
+      alert('Usuario Logado com Sucesso!')
+   } else {
+      alert('Usuario não encontrado')
+   }
 }
