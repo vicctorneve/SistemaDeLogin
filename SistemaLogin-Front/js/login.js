@@ -32,7 +32,7 @@ form.addEventListener('submit', function(e){
 async function logar(){
    try {
       const url = await fetch("http://localhost:8080/usuarios");
-      if(url.status <= 204) throw new error('ERROR')
+      if(url.status !== 200) throw new error('ERROR')
       const obj_json = await url.json();
       const confirm = await obj_json.find(valor => {
          return usuarioLogin.value === valor.username && passwordLogin.value === valor.password
